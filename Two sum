@@ -1,0 +1,39 @@
+METHOD - 1
+Brute force 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+           for i in range(len(nums)):
+            for j in range(i+1,len(nums)):
+                if(nums[i]+nums[j]==target):
+                    return[i,j]
+EXPLAINATION
+1) Loop through every pair of element using two nested loop
+2)check if the pair of element added to get the target number
+3)if the sum matches, return the indices
+
+Space and Time complexitiy
+Time complexity O(n^2) because we check every pair
+space complexity O(1) there is no extra data structure are used
+
+
+METHOD - 2
+HashMap Approach
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hash_table = {}
+        for i, num in enumerate(nums):  # enumerate is used to store both value and index
+            complement = target - num
+            if complement in hash_table:
+                return [hash_table[complement], i]
+            hash_table[num] = i  
+EXPLAINATION
+[2,7,8,0,3]
+1)create a empty hash_table
+2)use for loop with enumerate for value and index
+3)create new variable complement=target-num "if target=9 then stored enumerate num=2 diffence=7 "
+4)check if the complement like that differnce value 7 in the hash_table NO, then num=7 9-7 differnce=2 check 2 in hash_table YES"SO WE CAN PRINT COMPLEMENT VALUE 7 AND I VALUE 2 IN RETURN"
+5)incase if not get in the hash_table store it like hash_table[nums]=i
+
+Space and Time Complexity
+Time complexity O(n) where n is the number of element in list
+Space complexity O(n)as we store upto n element in hash_table
