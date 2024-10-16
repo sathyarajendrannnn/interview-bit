@@ -1,0 +1,23 @@
+class Solution(object):
+    def mySqrt(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x < 2:
+            return x  # The square root of 0 is 0, and the square root of 1 is 1.
+
+        left, right = 2, x // 2  # Start binary search between 2 and x // 2
+
+        while left <= right:
+            mid = left + (right - left) // 2  # Avoid potential overflow
+            square = mid * mid
+            
+            if square == x:
+                return mid  # Found the exact square root
+            elif square < x:
+                left = mid + 1  # Move to the right half
+            else:
+                right = mid - 1  # Move to the left half
+
+        return right  # The right pointer will be at the floor of the square root
