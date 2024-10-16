@@ -1,0 +1,21 @@
+class Solution(object):
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        # Negative numbers are not palindromes
+        if x < 0:
+            return False
+        
+        # Initialize variables
+        original = x
+        rev = 0
+        
+        # Reverse the number
+        while x != 0:
+            rem = x % 10  # Get the last digit
+            rev = rev * 10 + rem  # Build the reversed number
+            x //= 10  # Remove the last digit from x
+
+        return original == rev
